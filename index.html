@@ -23,15 +23,13 @@
   <!-- <link rel="stylesheet" href="plugins/morris/morris.css" /> -->
   <!-- jvectormap -->
   <!-- <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css"> -->
-  <!-- Date Picker -->
-  <link rel="stylesheet" href="plugins/datepicker/datepicker3.css" />
-  <!-- Daterange picker -->
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css" />
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
 </head>
+
 <style>
   .content-wrapper {
     display: none;
@@ -44,6 +42,8 @@
   .content-dashboard {
     height: 300px;
   }
+ 
+ 
 
   @media screen and (max-width: 768px) {
     .content-dashboard {
@@ -51,12 +51,16 @@
     }
   }
 
-  @media screen and (max-width: 922px) {
+  @media screen and (max-width: 992px) {
     .content-dashboard {
       height: 150px;
     }
+    
   }
 </style>
+
+
+
 
 <body class="hold-transition skin-blue sidebar-mini">
   <div class="wrapper">
@@ -174,7 +178,7 @@
               <i class="fa fa-th"></i> <span>Advertisement</span>
             </a>
           </li>
-          <li class="tab">
+          <li class="tab statistics">
             <a href="#statistics">
               <i class="fa fa-line-chart"></i>
               <span>Statistics</span>
@@ -189,7 +193,7 @@
       </section>
       <!-- /.sidebar -->
     </aside>
-
+    
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper active">
       <!-- Content Header (Page header) -->
@@ -262,6 +266,140 @@
             </div>
           </div>
         </div>
+
+        <div class="row">
+          <!-- /.col (LEFT) -->
+          <h3 class="content-header">Biểu Đồ</h3>
+          <div class="col-md-6 col-xs-12">
+            <!-- LINE CHART -->
+            <div class="box box-info">
+              <div class="box-header with-border">
+                <h3 class="box-title">Line Chart</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="box-body chart-responsive">
+                <div class="chart" id="line-chart" style="height: 300px"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-xs-12">
+            <!-- AREA CHART -->
+            <div class="box box-primary" >
+              <div class="box-header with-border">
+                <h3 class="box-title">Area Chart</h3>
+
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                    <i class="fa fa-minus"></i>
+                  </button>
+                  <button type="button" class="btn btn-box-tool" data-widget="remove">
+                    <i class="fa fa-times"></i>
+                  </button>
+                </div>
+              </div>
+              <div class="box-body chart-responsive">
+                <div class="chart" id="revenue-chart" style="height: 300px;width: 100%"></div>
+              </div>
+            </div>
+            <script>
+              $(function () {
+                "use strict";
+            
+                var area = new Morris.Area({
+                  element: "revenue-chart",
+                  resize: true,
+                  data: [
+                    { y: "2011 Q1", item1: 2666, item2: 2666,item3: 2666 },
+                    { y: "2011 Q2", item1: 2778, item2: 2294,item3: 2666 },
+                    { y: "2011 Q3", item1: 4912, item2: 1969,item3: 5666 },
+                    { y: "2011 Q4", item1: 3767, item2: 3597,item3: 2666 },
+                    { y: "2012 Q1", item1: 6810, item2: 1914,item3: 1766 },
+                    { y: "2012 Q2", item1: 5670, item2: 4293,item3: 2666 },
+                    { y: "2012 Q3", item1: 4820, item2: 3795,item3: 2666 },
+                    { y: "2012 Q4", item1: 15073, item2: 5967,item3: 2666 },
+                    { y: "2013 Q1", item1: 10687, item2: 4460,item3: 3666 },
+                  
+                  ],
+                  xkey: "y",
+                  ykeys: ["item1", "item2","item3"],
+                  labels: ["Item 1", "Item 2","Item 3"],
+                  lineColors: ["#a0d0e0", "#3c8dbc","#30dbd0"],
+                  hideHover: "auto",
+                });
+            
+                var line = new Morris.Line({
+                  element: "line-chart",
+                  resize: true,
+                  data: [
+                    { y: "2011 Q1", item1: 2666 },
+                    { y: "2011 Q2", item1: 2778 },
+                    { y: "2011 Q3", item1: 4912 },
+                    { y: "2011 Q4", item1: 3767 },
+                    { y: "2012 Q1", item1: 6810 },
+                    { y: "2012 Q2", item1: 5670 },
+                    { y: "2012 Q3", item1: 4820 },
+                    { y: "2012 Q4", item1: 15073 },
+                    { y: "2013 Q1", item1: 10687 },
+                  
+                  ],
+                  xkey: "y",
+                  ykeys: ["item1"],
+                  labels: ["Item 1"],
+                  lineColors: ["#3c8dbc"],
+                  hideHover: "auto",
+            
+                });
+              });
+            </script>
+          
+          </div>
+       
+        </div>
+
+      
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <!-- Advertisement -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Advertisement
+          <small>Control panel</small>
+        </h1>
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="row"></div>
+      </section>
+      <!-- /.content -->
+    </div>
+    <!-- /.Advertisement -->
+
+    <!-- Statistics -->
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1>
+          Statistics
+          <small>Control panel</small>
+        </h1>
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
         <div class="row">
           <h3 class="content-header">Thống kê Nhiệt độ</h3>
           <div class="col-md-3 col-sm-6 col-xs-6">
@@ -450,139 +588,6 @@
             <!-- /.box -->
           </div>
         </div>
-      </section>
-      <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
-    <!-- Advertisement -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <h1>
-          Advertisement
-          <small>Control panel</small>
-        </h1>
-      </section>
-
-      <!-- Main content -->
-      <section class="content">
-        <div class="row"></div>
-      </section>
-      <!-- /.content -->
-    </div>
-    <!-- /.Advertisement -->
-
-    <!-- Statistics -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <section class="content-header">
-        <h1>
-          Statistics
-          <small>Control panel</small>
-        </h1>
-      </section>
-
-      <!-- Main content -->
-      <section class="content">
-        <div class="row">
-          <!-- /.col (LEFT) -->
-          <h3 class="content-header">Biểu Đồ</h3>
-          <div class="col-md-6">
-            <!-- LINE CHART -->
-            <div class="box box-info">
-              <div class="box-header with-border">
-                <h3 class="box-title">Line Chart</h3>
-
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-box-tool" data-widget="remove">
-                    <i class="fa fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="box-body chart-responsive">
-                <div class="chart" id="line-chart" style="height: 300px"></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <!-- AREA CHART -->
-            <div class="box box-primary">
-              <div class="box-header with-border">
-                <h3 class="box-title">Area Chart</h3>
-
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                    <i class="fa fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-box-tool" data-widget="remove">
-                    <i class="fa fa-times"></i>
-                  </button>
-                </div>
-              </div>
-              <div class="box-body chart-responsive">
-                <div class="chart" id="revenue-chart" style="height: 300px"></div>
-              </div>
-            </div>
-          
-          </div>
-          <script>
-            $(function () {
-              "use strict";
-
-              var area = new Morris.Area({
-                element: "revenue-chart",
-                resize: true,
-                data: [
-                  { y: "2011 Q1", item1: 2666, item2: 2666,item3: 2666 },
-                  { y: "2011 Q2", item1: 2778, item2: 2294,item3: 2666 },
-                  { y: "2011 Q3", item1: 4912, item2: 1969,item3: 5666 },
-                  { y: "2011 Q4", item1: 3767, item2: 3597,item3: 2666 },
-                  { y: "2012 Q1", item1: 6810, item2: 1914,item3: 1766 },
-                  { y: "2012 Q2", item1: 5670, item2: 4293,item3: 2666 },
-                  { y: "2012 Q3", item1: 4820, item2: 3795,item3: 2666 },
-                  { y: "2012 Q4", item1: 15073, item2: 5967,item3: 2666 },
-                  { y: "2013 Q1", item1: 10687, item2: 4460,item3: 3666 },
-                  { y: "2013 Q2", item1: 8432, item2: 5713,item3: 666 },
-                ],
-                xkey: "y",
-                ykeys: ["item1", "item2","item3"],
-                labels: ["Item 1", "Item 2","Item 3"],
-                lineColors: ["#a0d0e0", "#3c8dbc","#30dbd0"],
-                hideHover: "auto",
-                stacked:true,
-                pointSize: 3,
-                parseTime: false,
-                resize: true
-              });
-
-              var line = new Morris.Line({
-                element: "line-chart",
-                resize: true,
-                data: [
-                  { y: "2011 Q1", item1: 2666 },
-                  { y: "2011 Q2", item1: 2778 },
-                  { y: "2011 Q3", item1: 4912 },
-                  { y: "2011 Q4", item1: 3767 },
-                  { y: "2012 Q1", item1: 6810 },
-                  { y: "2012 Q2", item1: 5670 },
-                  { y: "2012 Q3", item1: 4820 },
-                  { y: "2012 Q4", item1: 15073 },
-                  { y: "2013 Q1", item1: 10687 },
-                  { y: "2013 Q2", item1: 8432 },
-                ],
-                xkey: "y",
-                ykeys: ["item1"],
-                labels: ["Item 1"],
-                lineColors: ["#3c8dbc"],
-                hideHover: "auto",
-              });
-            });
-          </script>
-        </div>
 
         <div class="row">
           <!-- /.col (LEFT) -->
@@ -740,19 +745,6 @@
       </section>
     </div>
     <!-- /.Statistics -->
-    <script>
-      $(function () {
-        $("#example1").DataTable();
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false
-        });
-      });
-    </script>
 
     <!-- Staff -->
     <div class="content-wrapper">
@@ -766,7 +758,199 @@
 
       <!-- Main content -->
       <section class="content">
-        <div class="row"></div>
+        <div class="row">
+            <!-- /.col (LEFT) -->
+            <h3 class="content-header">Bảng thống kê</h3>
+  
+            <div class="row">
+              <section class="content">
+                <div class="row">
+                  <div class="col-xs-6">
+                   
+                    <div class="box">
+                      <div class="box-header">
+                        <h3 class="box-title">Data Table With Full Features</h3>
+                      </div>
+                      <!-- /.box-header -->
+                      <div class="box-body">
+                        <table id="example4" class="table table-bordered table-striped">
+                          <thead>
+                          <tr>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Platform(s)</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Trident</td>
+                            <td>Internet
+                              Explorer 4.0
+                            </td>
+                            <td>Win 95+</td>
+                            <td> 4</td>
+                            <td>X</td>
+                          </tr>
+                          <tr>
+                            <td>Trident</td>
+                            <td>Internet
+                              Explorer 5.0
+                            </td>
+                            <td>Win 95+</td>
+                            <td>5</td>
+                            <td>C</td>
+                          </tr>
+                         
+                          <tr>
+                            <td>Misc</td>
+                            <td>Links</td>
+                            <td>Text only</td>
+                            <td>-</td>
+                            <td>X</td>
+                          </tr>
+                          <tr>
+                            <td>Misc</td>
+                            <td>Lynx</td>
+                            <td>Text only</td>
+                            <td>-</td>
+                            <td>X</td>
+                          </tr>
+                          <tr>
+                            <td>Misc</td>
+                            <td>IE Mobile</td>
+                            <td>Windows Mobile 6</td>
+                            <td>-</td>
+                            <td>C</td>
+                          </tr>
+                          <tr>
+                            <td>Misc</td>
+                            <td>PSP browser</td>
+                            <td>PSP</td>
+                            <td>-</td>
+                            <td>C</td>
+                          </tr>
+                          <tr>
+                            <td>Other browsers</td>
+                            <td>All others</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>U</td>
+                          </tr>
+                          </tbody>
+                          <tfoot>
+                          <tr>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Platform(s)</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                          </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                      <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                  </div>
+
+                  <div class="col-xs-6">
+                   
+                    <div class="box">
+                      <div class="box-header">
+                        <h3 class="box-title">Data Table With Full Features</h3>
+                      </div>
+                      <!-- /.box-header -->
+                      <div class="box-body">
+                        <table id="example3" class="table table-bordered table-striped">
+                          <thead>
+                          <tr>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Platform(s)</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                          <tr>
+                            <td>Trident</td>
+                            <td>Internet
+                              Explorer 4.0
+                            </td>
+                            <td>Win 95+</td>
+                            <td> 4</td>
+                            <td>X</td>
+                          </tr>
+                          <tr>
+                            <td>Trident</td>
+                            <td>Internet
+                              Explorer 5.0
+                            </td>
+                            <td>Win 95+</td>
+                            <td>5</td>
+                            <td>C</td>
+                          </tr>
+                         
+                          <tr>
+                            <td>Misc</td>
+                            <td>Links</td>
+                            <td>Text only</td>
+                            <td>-</td>
+                            <td>X</td>
+                          </tr>
+                          <tr>
+                            <td>Misc</td>
+                            <td>Lynx</td>
+                            <td>Text only</td>
+                            <td>-</td>
+                            <td>X</td>
+                          </tr>
+                          <tr>
+                            <td>Misc</td>
+                            <td>IE Mobile</td>
+                            <td>Windows Mobile 6</td>
+                            <td>-</td>
+                            <td>C</td>
+                          </tr>
+                          <tr>
+                            <td>Misc</td>
+                            <td>PSP browser</td>
+                            <td>PSP</td>
+                            <td>-</td>
+                            <td>C</td>
+                          </tr>
+                          <tr>
+                            <td>Other browsers</td>
+                            <td>All others</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>U</td>
+                          </tr>
+                          </tbody>
+                          <tfoot>
+                          <tr>
+                            <th>Rendering engine</th>
+                            <th>Browser</th>
+                            <th>Platform(s)</th>
+                            <th>Engine version</th>
+                            <th>CSS grade</th>
+                          </tr>
+                          </tfoot>
+                        </table>
+                      </div>
+                      <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                  </div>
+                  <!-- /.col -->
+                </div>
+                <!-- /.row -->
+              </section>
+            </div>
+            
+        </div>
       </section>
     </div>
     <!-- /.Staff -->
@@ -790,6 +974,21 @@
     </script>
   </div>
   <!-- ./wrapper -->
+  <script>
+    $(function () {
+      $("#example1").DataTable();
+      $("#example3").DataTable();
+      $("#example4").DataTable();
+      $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false
+      });
+    });
+  </script>
 
   <!-- jQuery 2.2.0 -->
   <script src="plugins/jQuery/jQuery-2.2.0.min.js"></script>
